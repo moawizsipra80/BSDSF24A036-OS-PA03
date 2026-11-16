@@ -2,6 +2,12 @@
 #include <dirent.h>
 
 char *read_cmd(const char *prompt) {
+    static int history_initialized;
+    if (!history_initialized) {
+        using_history();
+        stifle_history(HISTORY_SIZE);
+        history_initialized = 1;
+    }
     rl_attempted_completion_function = shell_completion;
     return readline(prompt);
 }
