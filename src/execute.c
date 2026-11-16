@@ -222,7 +222,7 @@ static int execute_pipeline(char **tokens, ShellState *state, const char *comman
                 close(fd);
             }
             if (output_file != NULL) {
-                int fd = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+                int fd = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
                 if (fd < 0) {
                     perror(output_file);
                     _exit(1);
