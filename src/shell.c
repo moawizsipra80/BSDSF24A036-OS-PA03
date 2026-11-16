@@ -56,6 +56,7 @@ static char *command_generator(const char *text, int state) {
 
 char **shell_completion(const char *text, int start, int end) {
     (void)end;
+    rl_completion_append_character = ' ';
     if (start == 0) {
         return rl_completion_matches(text, command_generator);
     }
