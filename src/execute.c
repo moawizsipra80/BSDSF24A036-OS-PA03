@@ -51,6 +51,7 @@ static int set_variable(const char *assignment, ShellState *state) {
     variable->value = value;
     variable->next = state->variables;
     state->variables = variable;
+    setenv(variable->name, variable->value, 1);
     return 1;
 }
 
