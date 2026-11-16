@@ -124,6 +124,10 @@ static void add_job(ShellState *state, pid_t pid, const char *command) {
     }
     state->jobs[state->job_count].pid = pid;
     state->jobs[state->job_count].command = strdup(command);
+    if (state->jobs[state->job_count].command == NULL) {
+        perror("strdup");
+        return;
+    }
     state->job_count++;
 }
 
