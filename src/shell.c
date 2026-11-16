@@ -278,6 +278,7 @@ int execute_if_block(ShellState *state, char *first_line) {
     int else_count = 0;
     int in_else = 0;
     int condition_status;
+    int selected_status;
     char *line;
 
     if (then_lines == NULL || else_lines == NULL) {
@@ -312,9 +313,11 @@ int execute_if_block(ShellState *state, char *first_line) {
     condition_status = execute_line(first_line, state);
     char **selected = condition_status == 0 ? then_lines : else_lines;
     int selected_count = condition_status == 0 ? then_count : else_count;
+    selected_status = condition_status;
     for (int i = 0; i < selected_count && !state->should_exit; i++) {
-        execute_line(selected[i], state);
+        selected_status = execute_line(selected[i], state);
     }
+    condition_status = selected_status;
     for (int i = 0; i < then_count; i++) free(then_lines[i]);
     for (int i = 0; i < else_count; i++) free(else_lines[i]);
     free(then_lines);
