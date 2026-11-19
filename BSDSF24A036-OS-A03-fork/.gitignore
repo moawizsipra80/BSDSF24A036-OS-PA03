@@ -1,0 +1,5 @@
+obj/
+bin/
+*.pdf
+*:Zone.Identifier
+.playwright-mcp/
