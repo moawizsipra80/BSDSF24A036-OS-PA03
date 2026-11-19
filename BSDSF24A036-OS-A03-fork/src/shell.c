@@ -104,7 +104,7 @@ int handle_builtin(char** arglist) {
         printf("  help            Show this help message\n");
         printf("  jobs            List background jobs\n");
         printf("  history         Show the last %d commands\n", HISTORY_SIZE);
-        printf("  !n              Re-run command number n from history\n");
+        printf("  !n              Re-run history entry number n\n");
         printf("  set             List all shell variables and their values\n");
         printf("\nVariables:\n");
         printf("  NAME=value      Assign a value to a shell variable\n");
